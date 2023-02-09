@@ -23,3 +23,16 @@ app.get("/get",async(req,res)=>{
      res.status(500).json({message:"error"})
     }
  })
+
+ app.get("/prod",async(req,res)=>{
+    try {
+     const connection=await mongoClient.connect(process.env.MONGO_URL);
+     const db=connection.db("misham");
+    let response= await db.collection("products").find().toArray()
+     await connection.close();
+     res.status(200).json(response)
+ 
+    } catch (error) {
+     res.status(500).json({message:"error"})
+    }
+ })
