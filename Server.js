@@ -4,14 +4,14 @@ app.use(express.json())
 app.listen(process.env.PORT || 6826)
 console.log("working...")
 require('dotenv').config();
-const cors=require("cors")
-app.use(cors({origin:"http://localhost:3000"}))
+//const cors=require("cors")
+//app.use(cors({origin:"http://localhost:3000"}))
 const mongodb=require("mongodb")
 const mongoClient=mongodb.MongoClient
 
 
 
-app.get("/get",async(req,res)=>{
+app.get("/empDetails",async(req,res)=>{
     try {
      const connection=await mongoClient.connect(process.env.MONGO_URL);
      const db=connection.db("misham");
@@ -24,7 +24,7 @@ app.get("/get",async(req,res)=>{
     }
  })
 
- app.get("/prod",async(req,res)=>{
+ app.get("/productDetails",async(req,res)=>{
     try {
      const connection=await mongoClient.connect(process.env.MONGO_URL);
      const db=connection.db("misham");
