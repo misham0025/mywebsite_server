@@ -12,9 +12,7 @@ app.use(cors({origin:"http://localhost:3000"}))
 const mongodb=require("mongodb")
 const mongoClient=mongodb.MongoClient
 
-const response={
-    name:"misham"
-}
+
 
 app.get("/get",async(req,res)=>{
     try {
