@@ -1,13 +1,10 @@
 const express=require("express")
 const app=express()
 app.use(express.json())
-app.listen(5099)
+app.listen(process.env.PORT || 6826)
 console.log("working...")
 require('dotenv').config();
-
 const cors=require("cors")
-const Mongodb=require("Mongodb")
-const Mongoclient=Mongodb.Mongoclient
 app.use(cors({origin:"http://localhost:3000"}))
 const mongodb=require("mongodb")
 const mongoClient=mongodb.MongoClient
