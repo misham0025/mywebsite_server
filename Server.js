@@ -33,23 +33,5 @@ app.get("/productDetails", cors(), async (req, res) => {
   }
 });
 
-app.get("/prodet", cors(), async (req, res) => {
-  try {
-    const pageSize =  10;
-    const page =  1;
-    const connection = await mongoClient.connect(process.env.MONGO_URL);
-    const db = connection.db("misham");
-    let response = await db.collection("products").find().toArray();
-    await connection.close();
-    const Model =response;
-    Model.find()
-      .skip((page - 1) * pageSize)
-      .limit(pageSize)
-      .then(docs => {
-        res.send(docs);
-      })
-   
-  } catch (error) {
-    res.status(500).json({ message: "error" });
-  }
-});
+
+
